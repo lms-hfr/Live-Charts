@@ -5,15 +5,15 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <!--<TargetFrameworkProfile>Profile78</TargetFrameworkProfile>-->
-    <TargetFrameworks>net452;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net8.0;net7.0;net6.0;netcoreapp3.1;net452;</TargetFrameworks>
     <AssemblyTitle>LiveCharts</AssemblyTitle>
     <Product>LiveCharts</Product>
     <NeutralLanguage>en</NeutralLanguage>
-    <Description>Simple, flexible, interactive and powerful data visualization for .Net (forked from master branch to add Support to netcoreapp3.1)</Description>
+    <Description>Simple, flexible, interactive and powerful data visualization for .Net (forked from master branch to add Support to (Multi Targting) netcoreapp3.1, Net 6.0, Net 7.0 And Net 8.0)</Description>
     <Copyright>Copyright 2016</Copyright>
-    <Version>0.9.7</Version>
-    <AssemblyVersion>0.9.7</AssemblyVersion>
-    <FileVersion>0.9.7</FileVersion>
+    <Version>0.9.8</Version>
+    <AssemblyVersion>0.9.8</AssemblyVersion>
+    <FileVersion>0.9.8</FileVersion>
     <DocumentationFile>bin\$(Configuration)\LiveCharts.XML</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>Beto Rodriguez</Authors>

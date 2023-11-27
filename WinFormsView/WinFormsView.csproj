@@ -4,12 +4,12 @@
     <AssemblyName>LiveCharts.WinForms</AssemblyName>
     <AssemblyTitle>LiveCharts.WinForms</AssemblyTitle>
     <Product>LiveCharts.WinForms</Product>
-    <Description>Simple, flexible, interactive and powerful data visualization for WinForms (forked from master branch to add Support to netcoreapp3.1)</Description>
+    <Description>Simple, flexible, interactive and powerful data visualization for WinForms (forked from master branch to add Support to (Multi Targeting) netcoreapp3.1, Net 6.0, Net 7.0 And Net 8.0)</Description>
     <Copyright>Copyright 2016</Copyright>
-    <Version>0.9.7</Version>
-    <AssemblyVersion>0.9.7</AssemblyVersion>
-    <FileVersion>0.9.7</FileVersion>
-    <TargetFrameworks>net45;netcoreapp3.1</TargetFrameworks>
+    <Version>0.9.8</Version>
+    <AssemblyVersion>0.9.8</AssemblyVersion>
+    <FileVersion>0.9.8</FileVersion>
+    <TargetFrameworks>net8.0-windows;net7.0-windows;net6.0-windows;netcoreapp3.1;net45;</TargetFrameworks>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <Authors>Beto Rodriguez</Authors>
     <PackageIconUrl>http://lvcharts.net/Content/Images/Logos/lcred.png</PackageIconUrl>
@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <!--References for .Net Core 3.1-->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netcore'))">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcore')) Or !$(TargetFramework.StartsWith('net4'))">
     <!--<PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.0" />-->
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>

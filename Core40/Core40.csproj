@@ -2,14 +2,14 @@
   <PropertyGroup>
     <RootNamespace>LiveCharts</RootNamespace>
     <AssemblyName>LiveCharts</AssemblyName>
-    <TargetFrameworks>net40;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net8.0;net7.0;net6.0;netcoreapp3.1;net40;</TargetFrameworks>
     <AssemblyTitle>LiveCharts</AssemblyTitle>
     <Product>LiveCharts</Product>
     <NeutralLanguage>en</NeutralLanguage>
-    <Description>Core library for LiveCharts (Support netcoreapp3.1)</Description>
+    <Description>Core library for LiveCharts (Support (Multi Targting) netcoreapp3.1, Net 6.0, Net 7.0 And Net 8.0)</Description>
     <Copyright>Copyright © 2016 Alberto Rodríguez Orozco</Copyright>
-    <AssemblyVersion>0.9.7</AssemblyVersion>
-    <FileVersion>0.9.7</FileVersion>
+    <AssemblyVersion>0.9.8</AssemblyVersion>
+    <FileVersion>0.9.8</FileVersion>
     <DocumentationFile>bin\$(Configuration)\LiveCharts.xml</DocumentationFile>
     <OutputPath>bin\$(Configuration)\</OutputPath>
   </PropertyGroup>
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <!--References for .Net Core 3.1-->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netcore'))">
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcore')) Or !$(TargetFramework.StartsWith('net4'))">
     <!--<PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.0" />-->
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>

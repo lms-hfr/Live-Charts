@@ -3,14 +3,14 @@
     <RootNamespace>LiveCharts.Wpf</RootNamespace>
     <AssemblyName>LiveCharts.Wpf</AssemblyName>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworks>net40;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net8.0-windows;net7.0-windows;net6.0-windows;netcoreapp3.1;net40;</TargetFrameworks>
     <AssemblyTitle>LiveCharts.Wpf</AssemblyTitle>
     <Product>LiveCharts.Wpf</Product>
-    <Description>Simple, flexible, interactive and powerful data visualization for Wpf (forked from master branch to add Support to netcoreapp3.1)</Description>
+    <Description>Simple, flexible, interactive and powerful data visualization for Wpf (forked from master branch to add Support to (Multi Targeting) netcoreapp3.1, Net 6.0, Net 7.0 And Net 8.0)</Description>
     <Copyright>Copyright 2016</Copyright>
-    <Version>0.9.7</Version>
-    <AssemblyVersion>0.9.7</AssemblyVersion>
-    <FileVersion>0.9.7</FileVersion>
+    <Version>0.9.8</Version>
+    <AssemblyVersion>0.9.8</AssemblyVersion>
+    <FileVersion>0.9.8</FileVersion>
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <UseWPF>true</UseWPF>
     <Authors>Beto Rodriguez</Authors>
@@ -56,8 +56,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
 
-  <!--References for .Net Core 3.1-->
-  <ItemGroup Condition="$(TargetFramework.StartsWith('netcore'))">
+  <!--References for .Net Core 3.1 and up-->
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netcore')) or !$(TargetFramework.StartsWith('net4'))">
     <!--<PackageReference Include="Microsoft.Windows.Compatibility" Version="3.1.0" />-->
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
