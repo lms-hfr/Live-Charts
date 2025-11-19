@@ -73,7 +73,10 @@ namespace LiveCharts.Wpf
         #endregion
 
         #region Properties
-
+        /// <summary>
+        /// Set or get if series view is updated automatically
+        /// </summary>
+        public bool AutoUpdate { get; set; } = true;
         private IChartValues LastKnownValues { get; set; }
         internal double DefaultFillOpacity { get; set; }
         /// <summary>
@@ -121,7 +124,7 @@ namespace LiveCharts.Wpf
         /// The values property
         /// </summary>
         public static readonly DependencyProperty ValuesProperty = DependencyProperty.Register(
-            "Values", typeof (IChartValues), typeof (Series),
+            "Values", typeof(IChartValues), typeof(Series),
             new PropertyMetadata(default(IChartValues), OnValuesInstanceChanged));
 
         /// <summary>
@@ -138,14 +141,14 @@ namespace LiveCharts.Wpf
         /// The title property
         /// </summary>
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(
-            "Title", typeof (string), typeof (Series),
+            "Title", typeof(string), typeof(Series),
             new PropertyMetadata(default(string), CallChartUpdater()));
         /// <summary>
         /// Gets or sets series title
         /// </summary>
         public string Title
         {
-            get { return (string) GetValue(TitleProperty); }
+            get { return (string)GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }
         }
 
@@ -153,14 +156,14 @@ namespace LiveCharts.Wpf
         /// The stroke property
         /// </summary>
         public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
-            "Stroke", typeof (Brush), typeof (Series), 
+            "Stroke", typeof(Brush), typeof(Series),
             new PropertyMetadata(default(Brush), CallChartUpdater()));
         /// <summary>
         /// Gets or sets series stroke, if this property is null then a SolidColorBrush will be assigned according to series position in collection and Chart.Colors property
         /// </summary>
         public Brush Stroke
         {
-            get { return (Brush) GetValue(StrokeProperty); }
+            get { return (Brush)GetValue(StrokeProperty); }
             set { SetValue(StrokeProperty, value); }
         }
 
@@ -168,14 +171,14 @@ namespace LiveCharts.Wpf
         /// The stroke thickness property
         /// </summary>
         public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(
-            "StrokeThickness", typeof (double), typeof (Series), 
+            "StrokeThickness", typeof(double), typeof(Series),
             new PropertyMetadata(default(double), CallChartUpdater()));
         /// <summary>
         /// Gets or sets the series stroke thickness.
         /// </summary>
         public double StrokeThickness
         {
-            get { return (double) GetValue(StrokeThicknessProperty); }
+            get { return (double)GetValue(StrokeThicknessProperty); }
             set { SetValue(StrokeThicknessProperty, value); }
         }
 
@@ -183,14 +186,14 @@ namespace LiveCharts.Wpf
         /// The fill property
         /// </summary>
         public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
-            "Fill", typeof (Brush), typeof (Series), 
+            "Fill", typeof(Brush), typeof(Series),
             new PropertyMetadata(default(Brush), CallChartUpdater()));
         /// <summary>
         /// Gets or sets series fill color, if this property is null then a SolidColorBrush will be assigned according to series position in collection and Chart.Colors property, also Fill property has a default opacity according to chart type.
         /// </summary>
         public Brush Fill
         {
-            get { return (Brush) GetValue(FillProperty); }
+            get { return (Brush)GetValue(FillProperty); }
             set { SetValue(FillProperty, value); }
         }
 
@@ -198,14 +201,14 @@ namespace LiveCharts.Wpf
         /// The data labels property
         /// </summary>
         public static readonly DependencyProperty DataLabelsProperty = DependencyProperty.Register(
-            "DataLabels", typeof (bool), typeof (Series), 
+            "DataLabels", typeof(bool), typeof(Series),
             new PropertyMetadata(default(bool), CallChartUpdater()));
         /// <summary>
         /// Gets or sets if series should include a label over each data point.
         /// </summary>
         public bool DataLabels
         {
-            get { return (bool) GetValue(DataLabelsProperty); }
+            get { return (bool)GetValue(DataLabelsProperty); }
             set { SetValue(DataLabelsProperty, value); }
         }
 
@@ -223,7 +226,7 @@ namespace LiveCharts.Wpf
         /// </value>
         public DataTemplate DataLabelsTemplate
         {
-            get { return (DataTemplate) GetValue(DataLabelsTemplateProperty); }
+            get { return (DataTemplate)GetValue(DataLabelsTemplateProperty); }
             set { SetValue(DataLabelsTemplateProperty, value); }
         }
 
@@ -231,14 +234,14 @@ namespace LiveCharts.Wpf
         /// The font family property
         /// </summary>
         public static readonly DependencyProperty FontFamilyProperty = DependencyProperty.Register(
-            "FontFamily", typeof (FontFamily), typeof (Series), 
+            "FontFamily", typeof(FontFamily), typeof(Series),
             new PropertyMetadata(new FontFamily("Segoe UI")));
         /// <summary>
         /// Gets or sets labels font family
         /// </summary>
         public FontFamily FontFamily
         {
-            get { return (FontFamily) GetValue(FontFamilyProperty); }
+            get { return (FontFamily)GetValue(FontFamilyProperty); }
             set { SetValue(FontFamilyProperty, value); }
         }
 
@@ -246,8 +249,8 @@ namespace LiveCharts.Wpf
         /// The font size property
         /// </summary>
         public static readonly DependencyProperty FontSizeProperty = DependencyProperty.Register(
-            "FontSize", typeof (double),
-            typeof (Series), new PropertyMetadata(10d, CallChartUpdater()));
+            "FontSize", typeof(double),
+            typeof(Series), new PropertyMetadata(10d, CallChartUpdater()));
         /// <summary>
         /// Gets or sets labels font size
         /// </summary>
@@ -261,7 +264,7 @@ namespace LiveCharts.Wpf
         /// The font weight property
         /// </summary>
         public static readonly DependencyProperty FontWeightProperty = DependencyProperty.Register(
-            "FontWeight", typeof (FontWeight), typeof (Series),
+            "FontWeight", typeof(FontWeight), typeof(Series),
             new PropertyMetadata(FontWeights.Bold, CallChartUpdater()));
         /// <summary>
         /// Gets or sets labels font weight
@@ -276,8 +279,8 @@ namespace LiveCharts.Wpf
         /// The font style property
         /// </summary>
         public static readonly DependencyProperty FontStyleProperty = DependencyProperty.Register(
-            "FontStyle", typeof (FontStyle),
-            typeof (Series), new PropertyMetadata(FontStyles.Normal, CallChartUpdater()));
+            "FontStyle", typeof(FontStyle),
+            typeof(Series), new PropertyMetadata(FontStyles.Normal, CallChartUpdater()));
         /// <summary>
         /// Gets or sets labels font style
         /// </summary>
@@ -291,8 +294,8 @@ namespace LiveCharts.Wpf
         /// The font stretch property
         /// </summary>
         public static readonly DependencyProperty FontStretchProperty = DependencyProperty.Register(
-            "FontStretch", typeof (FontStretch),
-            typeof (Series), new PropertyMetadata(FontStretches.Normal, CallChartUpdater()));
+            "FontStretch", typeof(FontStretch),
+            typeof(Series), new PropertyMetadata(FontStretches.Normal, CallChartUpdater()));
         /// <summary>
         /// Gets or sets labels font stretch
         /// </summary>
@@ -306,8 +309,8 @@ namespace LiveCharts.Wpf
         /// The foreground property
         /// </summary>
         public static readonly DependencyProperty ForegroundProperty = DependencyProperty.Register(
-            "Foreground", typeof (Brush),
-            typeof (Series), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(55, 71, 79))));
+            "Foreground", typeof(Brush),
+            typeof(Series), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(55, 71, 79))));
         /// <summary>
         /// Gets or sets labels text color.
         /// </summary>
@@ -321,7 +324,7 @@ namespace LiveCharts.Wpf
         /// The stroke dash array property
         /// </summary>
         public static readonly DependencyProperty StrokeDashArrayProperty = DependencyProperty.Register(
-            "StrokeDashArray", typeof(DoubleCollection), typeof(Series), 
+            "StrokeDashArray", typeof(DoubleCollection), typeof(Series),
             new PropertyMetadata(default(DoubleCollection)));
         /// <summary>
         /// Gets or sets the stroke dash array of a series, sue this property to draw dashed strokes
@@ -336,7 +339,7 @@ namespace LiveCharts.Wpf
         /// The point geometry property
         /// </summary>
         public static readonly DependencyProperty PointGeometryProperty =
-            DependencyProperty.Register("PointGeometry", typeof (Geometry), typeof (Series),
+            DependencyProperty.Register("PointGeometry", typeof(Geometry), typeof(Series),
                 new PropertyMetadata(DefaultGeometries.Circle, CallChartUpdater()));
         /// <summary>
         /// Gets or sets the point geometry, this shape will be drawn in the Tooltip, Legend, and if line series in every point also.
@@ -351,13 +354,13 @@ namespace LiveCharts.Wpf
         /// The scales x at property
         /// </summary>
         public static readonly DependencyProperty ScalesXAtProperty = DependencyProperty.Register(
-            "ScalesXAt", typeof (int), typeof (Series), new PropertyMetadata(default(int), CallChartUpdater()));
+            "ScalesXAt", typeof(int), typeof(Series), new PropertyMetadata(default(int), CallChartUpdater()));
         /// <summary>
         /// Gets or sets the axis where series is scaled at, the axis must exist in the collection
         /// </summary>
         public int ScalesXAt
         {
-            get { return (int) GetValue(ScalesXAtProperty); }
+            get { return (int)GetValue(ScalesXAtProperty); }
             set { SetValue(ScalesXAtProperty, value); }
         }
 
@@ -365,13 +368,13 @@ namespace LiveCharts.Wpf
         /// The scales y at property
         /// </summary>
         public static readonly DependencyProperty ScalesYAtProperty = DependencyProperty.Register(
-            "ScalesYAt", typeof (int), typeof (Series), new PropertyMetadata(default(int), CallChartUpdater()));
+            "ScalesYAt", typeof(int), typeof(Series), new PropertyMetadata(default(int), CallChartUpdater()));
         /// <summary>
         /// Gets or sets the axis where series is scaled at, the axis must exist in the collection
         /// </summary>
         public int ScalesYAt
         {
-            get { return (int) GetValue(ScalesYAtProperty); }
+            get { return (int)GetValue(ScalesYAtProperty); }
             set { SetValue(ScalesYAtProperty, value); }
         }
 
@@ -379,13 +382,13 @@ namespace LiveCharts.Wpf
         /// The label point property
         /// </summary>
         public static readonly DependencyProperty LabelPointProperty = DependencyProperty.Register(
-            "LabelPoint", typeof (Func<ChartPoint, string>), typeof (Series), new PropertyMetadata(default(Func<ChartPoint, string>)));
+            "LabelPoint", typeof(Func<ChartPoint, string>), typeof(Series), new PropertyMetadata(default(Func<ChartPoint, string>)));
         /// <summary>
         /// Gets or sets the label formatter for the data label and tooltip, this property is set by default according to the series
         /// </summary>
         public Func<ChartPoint, string> LabelPoint
         {
-            get { return (Func<ChartPoint, string>) GetValue(LabelPointProperty); }
+            get { return (Func<ChartPoint, string>)GetValue(LabelPointProperty); }
             set { SetValue(LabelPointProperty, value); }
         }
 
@@ -393,7 +396,7 @@ namespace LiveCharts.Wpf
         /// The configuration property
         /// </summary>
         public static readonly DependencyProperty ConfigurationProperty = DependencyProperty.Register(
-            "Configuration", typeof (object), typeof (Series), 
+            "Configuration", typeof(object), typeof(Series),
             new PropertyMetadata(default(object), CallChartUpdater()));
         /// <summary>
         /// Gets or sets series mapper, if this property is set then the library will ignore the SeriesCollection mapper and global mappers.
@@ -416,7 +419,7 @@ namespace LiveCharts.Wpf
             {
                 control = new ContentControl();
                 control.SetBinding(VisibilityProperty,
-                    new Binding {Path = new PropertyPath(VisibilityProperty), Source = this});
+                    new Binding { Path = new PropertyPath(VisibilityProperty), Source = this });
                 Panel.SetZIndex(control, int.MaxValue - 1);
 
                 Model.Chart.View.AddToDrawMargin(control);
@@ -486,7 +489,7 @@ namespace LiveCharts.Wpf
         /// </summary>
         public virtual void InitializeColors()
         {
-            var wpfChart = (Chart) Model.Chart.View;
+            var wpfChart = (Chart)Model.Chart.View;
 
             if (Stroke != null && Fill != null) return;
 
@@ -501,7 +504,7 @@ namespace LiveCharts.Wpf
 
             if (Fill == null)
             {
-                var fillBursh = new SolidColorBrush(nextColor) {Opacity = DefaultFillOpacity};
+                var fillBursh = new SolidColorBrush(nextColor) { Opacity = DefaultFillOpacity };
                 fillBursh.Freeze();
                 SetValue(FillProperty, fillBursh);
             }
@@ -539,7 +542,7 @@ namespace LiveCharts.Wpf
 
         private static void OnValuesInstanceChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         {
-            var series = (Series) dependencyObject;
+            var series = (Series)dependencyObject;
 
             if (series.Values != series.LastKnownValues && series.LastKnownValues != null)
             {
@@ -568,16 +571,15 @@ namespace LiveCharts.Wpf
                 if (wpfSeries.Model.Chart != null) wpfSeries.Model.Chart.Updater.Run(animate);
             };
         }
-        
+
         private static void OnIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-             var series = (Series) sender;
+            var series = (Series)sender;
 
             if (series.Visibility == Visibility.Collapsed || series.Visibility == Visibility.Hidden)
                 series.Erase(false);
 
-            if (series.Model == null) return;
-            series.Model.Chart.Updater.Run();
+            series.Model?.Chart?.Updater?.Run();
         }
 
         private static IChartValues GetValuesForDesigner()
@@ -588,7 +590,7 @@ namespace LiveCharts.Wpf
             if (gvt != null) gvt = gvt.MakeGenericType(typeof(ObservableValue));
 
             var obj = gvt != null
-                ? (IChartValues) Activator.CreateInstance(gvt)
+                ? (IChartValues)Activator.CreateInstance(gvt)
                 : new ChartValues<ObservableValue>();
 
             obj.Add(new ObservableValue(r.Next(0, 100)));

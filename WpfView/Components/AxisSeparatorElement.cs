@@ -124,29 +124,33 @@ namespace LiveCharts.Wpf.Components
         /// <param name="toLabel">To label.</param>
         /// <param name="toLine">To line.</param>
         /// <param name="tab">The tab.</param>
-        public void Place(ChartCore chart, AxisCore axis, AxisOrientation direction, int axisIndex, 
+        public void Place(ChartCore chart, AxisCore axis, AxisOrientation direction, int axisIndex,
             double toLabel, double toLine, double tab)
         {
-            if (direction == AxisOrientation.Y)
+            try
             {
-                Line.X1 = chart.DrawMargin.Left;
-                Line.X2 = chart.DrawMargin.Left + chart.DrawMargin.Width;
-                Line.Y1 = toLine;
-                Line.Y2 = toLine;
+                if (direction == AxisOrientation.Y)
+                {
+                    Line.X1 = chart.DrawMargin.Left;
+                    Line.X2 = chart.DrawMargin.Left + chart.DrawMargin.Width;
+                    Line.Y1 = toLine;
+                    Line.Y2 = toLine;
 
-                Canvas.SetLeft(TextBlock, tab);
-                Canvas.SetTop(TextBlock, toLabel);
-            }
-            else
-            {
-                Line.X1 = toLine;
-                Line.X2 = toLine;
-                Line.Y1 = chart.DrawMargin.Top;
-                Line.Y2 = chart.DrawMargin.Top + chart.DrawMargin.Height;
+                    Canvas.SetLeft(TextBlock, tab);
+                    Canvas.SetTop(TextBlock, toLabel);
+                }
+                else
+                {
+                    Line.X1 = toLine;
+                    Line.X2 = toLine;
+                    Line.Y1 = chart.DrawMargin.Top;
+                    Line.Y2 = chart.DrawMargin.Top + chart.DrawMargin.Height;
 
-                Canvas.SetLeft(TextBlock, toLabel);
-                Canvas.SetTop(TextBlock, tab);
+                    Canvas.SetLeft(TextBlock, toLabel);
+                    Canvas.SetTop(TextBlock, tab);
+                }
             }
+            catch { } // empty catch??
         }
 
         /// <summary>
@@ -240,7 +244,7 @@ namespace LiveCharts.Wpf.Components
                 Duration = chart.View.AnimationsSpeed
             };
 
-            var dispatcher = ((Chart) chart.View).Dispatcher;
+            var dispatcher = ((Chart)chart.View).Dispatcher;
             anim.Completed += (sender, args) =>
             {
                 dispatcher.Invoke(new Action(() =>

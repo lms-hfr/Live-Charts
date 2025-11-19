@@ -32,7 +32,7 @@ namespace LiveCharts.Wpf.Components
     {
         public ChartUpdater(TimeSpan frequency)
         {
-            Timer = new DispatcherTimer {Interval = frequency};
+            Timer = new DispatcherTimer { Interval = frequency };
 
             Timer.Tick += OnTimerOnTick;
             Freq = frequency;
@@ -46,7 +46,7 @@ namespace LiveCharts.Wpf.Components
         {
             if (Timer == null)
             {
-                Timer = new DispatcherTimer {Interval = Freq};
+                Timer = new DispatcherTimer { Interval = Freq };
                 Timer.Tick += OnTimerOnTick;
                 IsUpdating = false;
             }
@@ -66,7 +66,10 @@ namespace LiveCharts.Wpf.Components
 
         public override void UpdateFrequency(TimeSpan freq)
         {
-            Timer.Interval = freq;
+            if (Timer != null)
+            {
+                Timer.Interval = freq;
+            }
         }
 
         public void OnTimerOnTick(object sender, EventArgs args)
@@ -76,22 +79,26 @@ namespace LiveCharts.Wpf.Components
 
         private void UpdaterTick(bool restartView, bool force)
         {
-            var wpfChart = (Chart) Chart.View;
-            
-            if (!force && !wpfChart.IsVisible && !wpfChart.IsMocked) return;
+            try
+            {
+                var wpfChart = (Chart)Chart.View;
 
-            Chart.ControlSize = wpfChart.IsMocked
-                ? wpfChart.Model.ControlSize
-                : new CoreSize(wpfChart.ActualWidth, wpfChart.ActualHeight);
+                if (!force && !wpfChart.IsVisible && !wpfChart.IsMocked) return;
 
-            Timer.Stop();
-            Update(restartView, force);
-            IsUpdating = false;
+                Chart.ControlSize = wpfChart.IsMocked
+                    ? wpfChart.Model.ControlSize
+                    : new CoreSize(wpfChart.ActualWidth, wpfChart.ActualHeight);
 
-            RequiresRestart = false;
-            
-            wpfChart.ChartUpdated();
-            wpfChart.PrepareScrolBar();
+                Timer.Stop();
+                Update(restartView, force);
+                IsUpdating = false;
+
+                RequiresRestart = false;
+
+                wpfChart.ChartUpdated();
+                wpfChart.PrepareScrolBar();
+            }
+            catch { }
         }
     }
 }

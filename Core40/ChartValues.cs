@@ -99,7 +99,7 @@ namespace LiveCharts
             var isHorizontal = seriesView.Model.SeriesOrientation == SeriesOrientation.Horizontal;
 
             var index = 0;
-            foreach(var item in this)
+            foreach (var item in this)
             {
                 config.Evaluate(index, item, cp);
                 index++;
@@ -191,7 +191,7 @@ namespace LiveCharts
             {
                 if (isObservable)
                 {
-                    var observable = (IObservableChartPoint) value;
+                    var observable = (IObservableChartPoint)value;
                     if (observable != null)
                     {
                         observable.PointChanged -= ObservableOnPointChanged;
@@ -201,7 +201,7 @@ namespace LiveCharts
 
                 if (notifies)
                 {
-                    var notify = (INotifyPropertyChanged) value;
+                    var notify = (INotifyPropertyChanged)value;
                     if (notify != null)
                     {
                         notify.PropertyChanged -= NotifyOnPropertyChanged;
@@ -367,7 +367,15 @@ namespace LiveCharts
         private void OnChanged(IEnumerable<T> oldItems, IEnumerable<T> newItems)
         {
             if (Trackers.Keys.All(x => x != null && x.Model.Chart != null))
-                Trackers.Keys.ForEach(x => x.Model.Chart.Updater.Run());
+            {
+                Trackers.Keys.ForEach(x =>
+                {
+                    if (x.AutoUpdate)
+                    {
+                        x.Model.Chart.Updater.Run();
+                    }
+                });
+            }
         }
 
         #endregion

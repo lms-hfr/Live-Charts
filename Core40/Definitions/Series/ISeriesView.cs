@@ -31,6 +31,10 @@ namespace LiveCharts.Definitions.Series
     public interface ISeriesView
     {
         /// <summary>
+        ///  /// Set or get if series view is updated automatically
+        /// </summary>
+        bool AutoUpdate { get; set; }
+        /// <summary>
         /// Gets or sets the model.
         /// </summary>
         /// <value>
